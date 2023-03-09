@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '<pages>/styles/Home.module.css'
 import Header from '<pages>/components/mainPage/Header'
+import Banner from '<pages>/components/mainPage/Banner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function Home() {
       {/* Header Section */}
       <Header />
       {/* Banner Section */}
-
+      <Banner />
       {/* Explore Nearby Section */}
       
      </div>  
