@@ -24,13 +24,4 @@ import Header from '../../../components/mainPage/Header'
         expect(searchElement).toBeInTheDocument();
         expect(actionsElement).toBeInTheDocument();
     })
-
-
-
-
-
-
-
-
-
  })
