@@ -2,12 +2,33 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '<pages>/styles/Home.module.css'
-import Header from '<pages>/components/mainPage/Header'
-import Banner from '<pages>/components/mainPage/Banner'
+import Header from '../components/mainPage/Header'
+import Banner from '../components/mainPage/Banner'
+import SmallCard from '../components/mainPage/smallCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export const getStaticProps = async () => {
+  try {
+    const response = await fetch('https://www.jsonkeeper.com/b/4G1G');
+    const exploreData = await response.json();
+    return {
+      props: {
+        exploreData
+      }
+    };
+  } catch (error) {
+    console.log(`An error occurred: ${error}`)
+    return { props: {} };
+  }
+}
+
+type Props ={ 
+  exploreData?: ExploreSectionData[],
+}
+
+export default function Home({ exploreData }: Props) {
+  
   return (
     <div className="bg-white">
       <Head>
@@ -22,7 +43,28 @@ export default function Home() {
       {/* Banner Section */}
       <Banner />
       {/* Explore Nearby Section */}
+      <main className='max-w-7xl mx-auto px-8 sm:px-16'>
+        <section className='pt-6'>
+          <h2 className='text-4xl font-semibold pb-5 ml-10 sm:ml-0'>Explore Nearby</h2>
+          {/* static rendeing  */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {exploreData?.map((place, index) => (
+            <SmallCard key={`${place.location}-${index}`} place={place}  />
+          ))}
+          </div>
+
+
+
+
+
+        </section>       
+      </main>
+      
       
      </div>  
   )
 }
+
+
+
+ 
