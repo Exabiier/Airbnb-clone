@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 
-// TODO why is the rounded feature not working
+// TODO Need to do unit testing 
 
 type Props ={
     place: ExploreSectionData,

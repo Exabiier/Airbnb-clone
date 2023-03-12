@@ -3,3 +3,8 @@ type ExploreSectionData = {
     location: string,
     distance: string,
 }
+
+type MediumCardSectionData = {
+    img: string;
+    title: string;
+}
