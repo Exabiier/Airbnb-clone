@@ -10,10 +10,12 @@ import LargeCard from '../components/mainPage/LargeCard'
 import Footer from '../components/mainPage/Footer'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const getStaticProps = async () => {
   try {
+    // 'https://links.papareact.com/pyp
     const response = await fetch('https://www.jsonkeeper.com/b/4G1G');
     const exploreData = await response.json();
 
