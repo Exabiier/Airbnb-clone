@@ -6,16 +6,21 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 // @ts-ignore: there is no type for date range
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from 'next/router';
+import { NextRouter } from 'next/router';
 
 
+type Props = {
+    placeHolder?: string,
+}
 
 
-
-function Header() {
+function Header({placeHolder}: Props) {
     const [searchInput, setSearchInput ] = useState<string>("");
     const [startDate, setStartDate ] = useState<Date>(new Date());
     const [endDate, setEndDate] = useState<Date>(new Date());
-    const [ noOfGuest, setNoOfGuest ] = useState<number>(1)
+    const [ noOfGuest, setNoOfGuest ] = useState<number>(1);
+    const router: NextRouter = useRouter();
 
     const selectionRange = {
         startDate: startDate,
@@ -30,15 +35,30 @@ function Header() {
     const resetInput = () => {
         setSearchInput("");
     }
+
+    const searchQuery: QuerySearchParam = {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numberOfGuests: noOfGuest,
+    }
+
+    const search = () => {
+        router.push({
+            pathname:"/search",
+            query: searchQuery
+        })
+    }
+
   return (
     <header className="bg-white sticky top-0 z-50 grid grid-cols-3 shadow-md py-5 px-5 md:px-10">
 
-        <div data-testid="logo" className='relative flex items-center h-10 cursor-pointer my-auto' >
+        <div onClick={() => router.push("/")} data-testid="logo" className='relative flex items-center h-10 cursor-pointer my-auto' >
             <Image fill={true} src="https://links.papareact.com/qd3" alt="" className='object-contain object-left' />
         </div>
 
         <div data-testid="search" className="flex items-center md:border-2 rounded-full py-2 md:shadow-sm">
-            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} className='flex-grow pl-5 bg-transparent outline-none text-gray-600 text-sm placeholder-gray-400 ml-1 sm:ml-0'  type="text" placeholder="Start your search"/>
+            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} className='flex-grow pl-5 bg-transparent outline-none text-gray-600 text-sm placeholder-gray-400 ml-1 sm:ml-0'  type="text" placeholder={placeHolder || "Start your search"}/>
             <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 rounded-full text-white p-2 cursor-pointer md:mx-2" />
         </div>
 
@@ -69,7 +89,7 @@ function Header() {
             </div>
             <div className='flex'>
                 <button onClick={() => resetInput()} className="flex-grow text-gray-500">Cancel</button>
-                <button className="flex-grow  text-gray-400">Search</button>
+                <button onClick={() => search() } className="flex-grow  text-red-400">Search</button>
             </div>
         </div> }
         
