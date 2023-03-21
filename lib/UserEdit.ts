@@ -1,4 +1,3 @@
-
 export const capitalize = (userInfo: string) => {
       userInfo = userInfo.toLowerCase();
       const arr = userInfo.split(" ");

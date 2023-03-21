@@ -1,6 +1,7 @@
 import Footer from '<pages>/components/mainPage/Footer'
 import Header from '<pages>/components/mainPage/Header'
 import InfoCard from '<pages>/components/search/InfoCard';
+import Map from '<pages>/components/search/map';
 import { capitalize } from '<pages>/lib/UserEdit';
 import format from 'date-fns/format';
 import { useRouter } from 'next/router';
@@ -59,8 +60,9 @@ function Search() {
                     <InfoCard cardData={item} />
                 ))}
                 </div>
-                
-
+            </section>
+            <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+                <Map searchResult={array} />
             </section>
         </main>
 
