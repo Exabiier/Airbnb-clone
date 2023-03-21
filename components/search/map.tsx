@@ -1,7 +1,8 @@
 import { getCenter } from 'geolib';
+import Image from 'next/image';
 import React, { useState } from 'react'
-import ReactMapGL from 'react-map-gl';
-
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
 // TODO try to solve the view port problem
 type Props = {
   searchResult: InfoCard[]
@@ -33,8 +34,20 @@ function Map({searchResult}: Props) {
     mapboxAccessToken={mapboxAccesToken}
     {...viewport}
     
-    // onViewportChange={(nextViewport: any) => setViewport(nextViewport)}
+    onDrag={(nextViewport: any) => setViewport(nextViewport)}
     >
+      {searchResult.map((result) => (
+        <div key={result.long}>
+          <Marker
+            longitude={result.long}
+            latitude={result.lat}
+          >
+            <div className='relative h-10 w-6'>
+            <Image className='cursor-pointer' src="/images/google-maps.png" alt="Map marker" fill={true}/>
+            </div>
+          </Marker>
+        </div>
+      ))}
 
     </ReactMapGL>
   )
