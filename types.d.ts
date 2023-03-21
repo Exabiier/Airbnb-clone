@@ -27,3 +27,8 @@ type InfoCard ={
     long: number,
     lat: number,
 }
+
+type CenterCordinates = {
+    longitude: number,
+    latitude: number
+  }
