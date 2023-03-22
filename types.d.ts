@@ -16,7 +16,7 @@ type QuerySearchParam = {
     numberOfGuests: number | string,
 }
 
-type InfoCard ={
+type InfoCard = {
     img: string,
     location: string,
     title: string,
