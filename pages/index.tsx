@@ -39,6 +39,68 @@ type Props ={
   cardData?: MediumCardSectionData[]
 }
 
+const nearbySection: ExploreSectionData[] = [
+  {
+    img: "https://links.papareact.com/5j2",
+    location: "London",
+    distance: "45-minute drive"
+  },
+  {
+    img: "https://links.papareact.com/1to",
+    location: "Manchester",
+    distance: "4.5-hour drive"
+  },
+  {
+    img: "https://links.papareact.com/40m",
+    location: "Liverpool",
+    distance: "4.5-hour drive",
+  },
+  {
+    img: "https://links.papareact.com/msp",
+    location: "York",
+    distance: "4-hour drive",
+  },
+  {
+    img: "https://links.papareact.com/2k3",
+    location: "Cardiff",
+    distance: "45-minute drive",
+  },
+  {
+    img: "https://links.papareact.com/ynx",
+    location: "Birkenhead",
+    distance: "4.5-hour drive",
+  },
+  {
+    img: "https://links.papareact.com/kji",
+    location: "Newquay",
+    distance: "6-hour drive",
+  },
+  {
+    img: "https://links.papareact.com/41m",
+    location: "Hove",
+    distance: "2-hour drive",
+  },
+]
+
+const liveAnywhereSection: MediumCardSectionData[] = [
+  {
+    img: "https://links.papareact.com/2io",
+    title: "Outdoor getaways",
+  },
+  {
+    img: "https://links.papareact.com/q7j",
+    title: "Unique stays"
+  },
+  {
+    img: "https://links.papareact.com/s03",
+    title: "Entire homes"
+  },
+  {
+    img: "https://links.papareact.com/8ix",
+    title: "Pet allowed"
+  }
+]
+
 export default function Home({ exploreData, cardData }: Props) {
   
   return (
@@ -60,7 +122,7 @@ export default function Home({ exploreData, cardData }: Props) {
           <h2 className='text-4xl font-semibold pb-5 ml-10 sm:ml-0'>Explore Nearby</h2>
           {/* static rendeing  */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {exploreData?.map((place, index) => (
+          {nearbySection?.map((place, index) => (
             <SmallCard key={`${place.location}-${index}`} place={place}  />
           ))}
           </div>
@@ -68,7 +130,7 @@ export default function Home({ exploreData, cardData }: Props) {
         <section>
             <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
             <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
-            {cardData?.map((item, index) =>(
+            {liveAnywhereSection?.map((item, index) =>(
               <MediumCard key={`${item.img}-${index}`}  cardData={item} />
             ))}
             </div>

@@ -9,7 +9,20 @@ type Props = {
 }
 
 
+
 function Map({searchResult}: Props) {
+  const initailSate = {
+    img: "",
+    location: "",
+    title: "",
+    description: "",
+    star: 0,
+    price: "",
+    total: "",
+    long: 0,
+    lat: 0,
+  }
+  const [ selectedLocation, setSelectedLocation ] = useState<InfoCard>(initailSate);
   const cordinates: CenterCordinates[] = searchResult.map((result) => ({
     longitude: result.long,
     latitude: result.lat,
@@ -26,7 +39,7 @@ function Map({searchResult}: Props) {
 
   // Transform the search Results:
 
-
+  console.log(selectedLocation)
 
   return (
     <ReactMapGL
@@ -42,10 +55,25 @@ function Map({searchResult}: Props) {
             longitude={result.long}
             latitude={result.lat}
           >
-            <div className='relative h-10 w-6'>
-            <Image className='cursor-pointer' src="/images/google-maps.png" alt="Map marker" fill={true}/>
+            <div onClick={() => setSelectedLocation(result)}
+             className='relative h-10 w-6'>
+            <Image  className='cursor-pointer' 
+            src="/images/google-maps.png" 
+            alt="Map marker" fill={true}/>
             </div>
           </Marker>
+          {selectedLocation.long === result.long ? (
+            <Popup
+              onClose={() => setSelectedLocation(initailSate)}
+              closeOnClick={false}
+              latitude={result.lat}
+              longitude={result.long}
+            >
+              {result.title}
+            </Popup>
+          ):(
+            false
+          )}
         </div>
       ))}
 
