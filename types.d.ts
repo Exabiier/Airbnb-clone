@@ -24,8 +24,8 @@ type InfoCard = {
     star: number,
     price: string,
     total: string,
-    long: number,
-    lat: number,
+    long?: number,
+    lat?: number,
 }
 
 type CenterCordinates = {

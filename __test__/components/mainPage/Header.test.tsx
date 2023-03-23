@@ -2,6 +2,11 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import "@testing-library/jest-dom"
 import Header from '../../../components/mainPage/Header'
+import { useRouter } from 'next/router';
+
+jest.mock('next/router', () => ({
+    useRouter: () => ({pathname: '/'}),
+}))
 
  describe( 'Header Componet for Main Page', () =>{
     it('should render properly', () =>{

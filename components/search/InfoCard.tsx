@@ -18,7 +18,7 @@ function InfoCard( {cardData}: Props) {
         <div className='flex flex-col pl-5'>
             <div className='flex justify-between'>
                 <p>{location}</p>
-                <HeartIcon className='h-7 cursor-pointer' />
+                <HeartIcon className='h-7 cursor-pointer' data-testid='heart-icon' />
             </div>
             <h4 className='text-xl'>{title}</h4>
             <div className='border-b w-10 pt-2' />
@@ -26,7 +26,7 @@ function InfoCard( {cardData}: Props) {
 
             <div className='flex justify-between items-end pt-5'>
                 <p className='flex items-center'>
-                    <StarIcon className='h-5 text-red-400' />
+                    <StarIcon className='h-5 text-red-400' data-testid='star-icon' />
                     {star}
                 </p>
                 <div className=''>
