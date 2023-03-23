@@ -37,10 +37,6 @@ function Map({searchResult}: Props) {
     zoom: 11,
   });
 
-  // Transform the search Results:
-
-  console.log(selectedLocation)
-
   return (
     <ReactMapGL
     mapStyle="mapbox://styles/exabiier/clfhr2k7h000c01mq0cel7iq6"

@@ -15,7 +15,7 @@ function InfoCard( {cardData}: Props) {
         <div className='relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0'>
             <Image src={img} fill={true} className='object-cover rounded-2xl' alt='The listing pictures' />
         </div>
-        <div className='flex flex-col pl-5'>
+        <div className='flex flex-grow flex-col pl-5'>
             <div className='flex justify-between'>
                 <p>{location}</p>
                 <HeartIcon className='h-7 cursor-pointer' data-testid='heart-icon' />

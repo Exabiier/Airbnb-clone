@@ -88,7 +88,7 @@ function Search() {
                 </div>
                 <div className='flex flex-col'>
                 {array.map(item => (
-                    <InfoCard cardData={item} />
+                    <InfoCard key={item.long} cardData={item} />
                 ))}
                 </div>
             </section>
