@@ -109,7 +109,7 @@ export default function Home({ exploreData, cardData }: Props) {
         <title>Airbnb Demo</title>
         <meta name="description" content="This is an Airbnb Demo Project" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/logo.png" />
       </Head>
 
       {/* Header Section */}
